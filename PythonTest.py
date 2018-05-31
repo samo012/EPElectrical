@@ -1,8 +1,14 @@
 import serial
-ser = serial.Serial('/dev/cu.usbmodem1421', 9600)
+import csv
+ser = serial.Serial('/dev/cu.usbmodem1411', 9600)
+i = 0
 
 
+with open("csvfile.csv", "wb") as file:
+    writer = csv.writer(file)
+    while i < 10:
+    	writer.writerow(ser.readline()) 
+    	i = i + 1
 
-while True:
-  print ser.readline()
 
+    raw_input("Press Enter to continue...")
